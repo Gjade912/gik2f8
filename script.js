@@ -1,7 +1,5 @@
 'use strict';
 
-/*Vad ska vi göra här*/
-
 console.log("Test");
 
 const searchInput = null;
