@@ -32,23 +32,14 @@ function handleKeyPress(input){
 }
 
 function searchBooks(searchTerm){
-    /* 
-    Loopa igenom listan
-    Söka efter aktuella item i listan
-    Sökterm: titel
-    if titel innehåller sökterm
-        add to filtered list.
-
-    returnera list eller anropa renderBooklist
-    */
     let filteredList = [];
     for(let i = 0; i < bookList.length; i++) {
         const title = bookList[i].title.toLowerCase();
         
         
-        if(title.indexOf(searchTerm.toLowerCase()) > 0){
+        if(title.indexOf(searchTerm.toLowerCase()) >= 0){
             console.log('match?');
-            filteredList.push(bookList[0]);
+            filteredList.push(bookList[i]);
         }
 
     }
@@ -59,6 +50,12 @@ function renderBooklist(list){
 
 }
 
-searchBooks("oliver")
+handleKeyPress("e")
+
+function renderBooklist(list)
+{
+    /* Ska visa HTML visas/döljs baserat på inehållet. */
+    console.log(list);
+}
 
 
