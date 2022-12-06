@@ -2,7 +2,6 @@
 
 console.log("Test");
 
-const searchInput = null;
 const bookList = [
     {
         id: 1,
@@ -15,11 +14,18 @@ const bookList = [
         title: 'Hamlet'
     }
 ];
+//const searchInput = document.children[0].children[1].children[1];
+const searchField = document.getElementById('searchField')
+
+console.log(searchField)
+
+searchField.addEventListener("keyup", handleKeyPress);
+
 function test(func){
     func();
 }
 
-function handleKeyPress(input){
+function handleKeyPress(e){
     /*
     Ska läsa av värdet i searchbox 
     och skicka det till searchbooks
@@ -27,8 +33,7 @@ function handleKeyPress(input){
     searchbooks returnerar sorterad lista
     listan skickas till renderBooklist
     */
-    console.log("Handle keypress")
-    searchBooks(input)
+    searchBooks(e.target.value)
 }
 
 function searchBooks(searchTerm){
@@ -49,8 +54,6 @@ function searchBooks(searchTerm){
 function renderBooklist(list){
 
 }
-
-handleKeyPress("e")
 
 function renderBooklist(list)
 {
