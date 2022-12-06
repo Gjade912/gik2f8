@@ -15,9 +15,9 @@ const bookList = [
     }
 ];
 //const searchInput = document.children[0].children[1].children[1];
-const searchField = document.getElementById('searchField')
+const searchField = document.getElementById('searchField');
 
-console.log(searchField)
+console.log(searchField);
 
 searchField.addEventListener("keyup", handleKeyPress);
 
@@ -33,7 +33,7 @@ function handleKeyPress(e){
     searchbooks returnerar sorterad lista
     listan skickas till renderBooklist
     */
-    searchBooks(e.target.value)
+    searchBooks(e.target.value);
 }
 
 function searchBooks(searchTerm){
@@ -48,17 +48,34 @@ function searchBooks(searchTerm){
         }
 
     }
-    console.log(filteredList);
+    renderBooklist(filteredList);
 }
 
-function renderBooklist(list){
 
-}
+function renderBooklist(bookList)
+{   
+    let html = `<ul class="book-list rounded-md border-2 border-blue-400 bg-white w-full mx-auto">`;
+    for (let i = 0; i < bookList.length; i++)
+    {
+        html += 
+            `<li
+                class="book-list__item mb-2 mx-2 last:mb-0 p-3 text-indigo-900 last:border-b-0 border-b border-indigo-700 
+                cursor-pointer">
+                ${bookList[i].author} - ${bookList[i].title}
+            </li>`;
+    }        
+    html += `</ul>`;
+    
+    const existingElement = document.querySelector('.book-list');
+    console.log(existingElement);
+    
+    const root = document.getElementById('root');
+    if (existingElement) 
+    {
+        root.removeChild(existingElement);
+    }
 
-function renderBooklist(list)
-{
-    /* Ska visa HTML visas/döljs baserat på inehållet. */
-    console.log(list);
+    root.insertAdjacentHTML('beforeend', html);
 }
 
 
