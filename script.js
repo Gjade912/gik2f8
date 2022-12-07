@@ -39,14 +39,12 @@ function handleKeyPress(e){
 function searchBooks(searchTerm){
     let filteredList = [];
     for(let i = 0; i < bookList.length; i++) {
+        
         const title = bookList[i].title.toLowerCase();
-        
-        
         if(title.indexOf(searchTerm.toLowerCase()) >= 0){
             console.log('match?');
             filteredList.push(bookList[i]);
         }
-
     }
     renderBooklist(filteredList);
 }
