@@ -19,34 +19,17 @@ const searchField = document.getElementById('searchField');
 
 console.log(searchField);
 
-searchField.addEventListener("keyup", handleKeyPress);
+searchField.addEventListener("keyup", (e) => searchBooks(e.target.value));
 
 function test(func){
     func();
 }
 
-function handleKeyPress(e){
-    /*
-    Ska läsa av värdet i searchbox 
-    och skicka det till searchbooks
-    
-    searchbooks returnerar sorterad lista
-    listan skickas till renderBooklist
-    */
-    searchBooks(e.target.value);
-}
-
 function searchBooks(searchTerm){
-    let filteredList = [];
-    for(let i = 0; i < bookList.length; i++) {
-        
-        const title = bookList[i].title.toLowerCase();
-        if(title.indexOf(searchTerm.toLowerCase()) >= 0){
-            console.log('match?');
-            filteredList.push(bookList[i]);
-        }
-    }
-    renderBooklist(filteredList);
+    renderBooklist(bookList.filter(({title, author}) => 
+    title.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0 ||
+    author.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0
+    ));
 }
 
 
