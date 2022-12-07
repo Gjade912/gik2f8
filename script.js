@@ -1,7 +1,5 @@
 'use strict';
 
-console.log("Test");
-
 const bookList = [
     {
         id: 1,
@@ -14,24 +12,15 @@ const bookList = [
         title: 'Hamlet'
     }
 ];
-//const searchInput = document.children[0].children[1].children[1];
-const searchField = document.getElementById('searchField');
 
-console.log(searchField);
-
-searchField.addEventListener("keyup", (e) => searchBooks(e.target.value));
-
-function test(func){
-    func();
-}
-
-function searchBooks(searchTerm){
-    renderBooklist(bookList.filter(({title, author}) => 
-    title.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0 ||
-    author.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0
-    ));
-}
-
+searchField.addEventListener("keyup", (e) => 
+    renderBooklist(
+        bookList.filter(({title, author}) => {
+            const searchTerm = e.target.value.toLowerCase();
+            return title.toLowerCase().indexOf(searchTerm) >= 0 || author.toLowerCase().indexOf(searchTerm) >= 0;
+        })
+    )
+);
 
 function renderBooklist(bookList)
 {   
