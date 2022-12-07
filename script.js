@@ -38,4 +38,5 @@ function renderBooklist(bookList)
     }
 }
 
+getAll().then(bookList => console.log(bookList));
 
